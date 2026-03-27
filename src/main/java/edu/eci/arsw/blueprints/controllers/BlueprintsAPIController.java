@@ -15,12 +15,14 @@ import java.util.Map;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/blueprints")
+@RequestMapping("/api/v1/blueprints")
 public class BlueprintsAPIController {
 
     private final BlueprintsServices services;
 
-    public BlueprintsAPIController(BlueprintsServices services) { this.services = services; }
+    public BlueprintsAPIController(BlueprintsServices services) {
+        this.services = services;
+    }
 
     // GET /blueprints
     @GetMapping
@@ -37,6 +39,7 @@ public class BlueprintsAPIController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", e.getMessage()));
         }
     }
+
 
     // GET /blueprints/{author}/{bpname}
     @GetMapping("/{author}/{bpname}")
